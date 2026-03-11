@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Request Portal</title>
+<style>
+body{
+font-family: Arial;
+background:#f4f6f9;
+}
+
+.container{
+width:350px;
+margin:auto;
+margin-top:40px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0px 0px 10px gray;
+}
+
+h2{
+text-align:center;
+}
+
+input,select,textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#2d89ef;
+color:white;
+border:none;
+border-radius:5px;
+font-size:16px;
+}
+
+button:hover{
+background:#1b5fbf;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Employee Request</h2>
+
+<form>
+
+<label>Employee Name</label>
+<input type="text" required>
+
+<label>Employee ID</label>
+<input type="text" required>
+
+<label>Request Type</label>
+<select>
+<option>Leave Request</option>
+<option>Coming Late Today</option>
+<option>Work From Home</option>
+<option>WFH Request</option>
+</select>
+
+<label>Date</label>
+<input type="date">
+
+<label>Reason</label>
+<textarea></textarea>
+
+<button type="submit">Submit Request</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
