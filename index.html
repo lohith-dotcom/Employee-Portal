@@ -82,30 +82,22 @@ background:#1b5fbf;
 </div>
 <script>
 
-document.getElementById("employeeForm").addEventListener("submit", function(e){
+document.querySelector("form").addEventListener("submit", function(e){
 
 e.preventDefault();
 
-const data = {
-name: document.getElementById("name").value,
-id: document.getElementById("id").value,
-request: document.getElementById("request").value,
-date: document.getElementById("date").value,
-reason: document.getElementById("reason").value
-};
-
-fetch("https://script.google.com/macros/s/AKfycbxfvk98ndtgqV7sf_WgGddb4Mn-SX5V31W9qebdr-71hqHpD6iFxVyO-Lw1b3pR0Yw/exec",{
+fetch("https://script.google.com/macros/s/AKfycbyZuJDK2h4jgwH_sJ1YCUmCFg3eLCur3TDX5Z_avvr9ucn3fKkEVXij3xVdkXqlFK4X/exec",{
 method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify(data)
+body:JSON.stringify({
+name:document.querySelector("input[type=text]").value,
+id:document.querySelectorAll("input[type=text]")[1].value,
+request:document.querySelector("select").value,
+date:document.querySelector("input[type=date]").value,
+reason:document.querySelector("textarea").value
 })
-.then(response => response.text())
-.then(result => {
-alert("Request Submitted Successfully");
-document.getElementById("employeeForm").reset();
 });
+
+alert("Request Submitted Successfully");
 
 });
 
