@@ -86,18 +86,26 @@ document.querySelector("form").addEventListener("submit", function(e){
 
 e.preventDefault();
 
-fetch("https://script.google.com/macros/s/AKfycbzFLfKe5lXAsDz7qFThGSPwirMwekhLwL8F_UEpNBVmhHDydbRokdPt48030LSiFKrU/exec",{
-method:"POST",
-body:JSON.stringify({
-name:document.querySelector("input[type=text]").value,
-id:document.querySelectorAll("input[type=text]")[1].value,
-request:document.querySelector("select").value,
-date:document.querySelector("input[type=date]").value,
-reason:document.querySelector("textarea").value
-})
-});
+const data = {
+name: document.getElementById("name").value,
+id: document.getElementById("id").value,
+request: document.getElementById("request").value,
+date: document.getElementById("date").value,
+reason: document.getElementById("reason").value
+};
 
+fetch("https://script.google.com/macros/s/AKfycbzFLfKe5lXAsDz7qFThGSPwirMwekhLwL8F_UEpNBVmhHDydbRokdPt48030LSiFKrU/exec", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(data)
+})
+.then(response => response.text())
+.then(result => {
 alert("Request Submitted Successfully");
+document.getElementById("employeeForm").reset();
+});
 
 });
 
