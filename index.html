@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Employee Request Portal</title>
+
 <style>
+
 body{
-font-family: Arial;
+font-family:Arial;
 background:#f4f6f9;
 }
 
 .container{
-width:350px;
+width:380px;
 margin:auto;
-margin-top:40px;
+margin-top:60px;
 background:white;
-padding:20px;
+padding:25px;
 border-radius:10px;
-box-shadow:0px 0px 10px gray;
+box-shadow:0 0 15px gray;
 }
 
-h2{
+.logo{
 text-align:center;
+}
+
+.logo img{
+width:120px;
+}
+
+.company{
+text-align:center;
+font-size:18px;
+margin-top:8px;
+}
+
+.tagline{
+text-align:center;
+font-size:13px;
+color:#666;
+margin-bottom:20px;
 }
 
 input,select,textarea{
@@ -38,73 +58,86 @@ background:#2d89ef;
 color:white;
 border:none;
 border-radius:5px;
-font-size:16px;
 }
 
-button:hover{
-background:#1b5fbf;
-}
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h2>Employee Request</h2>
+<div class="logo">
+<img src="logo.png">
+</div>
 
-<form id="employeeForm">
+<div class="company">
+Namo Padmavati Outsourcing Private Limited
+</div>
+
+<div class="tagline">
+Integrity Before Income
+</div>
+
+<h3>Employee Request Portal</h3>
+
+<form id="form">
 
 <label>Employee Name</label>
-<input type="text" id="name" name="name" required>
+<input type="text" id="name" required>
 
 <label>Employee ID</label>
-<input type="text" id="id" name="id" required>
+<input type="text" id="id" required>
 
 <label>Request Type</label>
-<select id="request" name="request">
+<select id="request">
 <option>Leave Request</option>
 <option>Coming Late Today</option>
 <option>Work From Home</option>
-<option>WFH Request</option>
 </select>
 
-<label>Date</label>
-<input type="date" id="date" name="date">
+<label>Start Date</label>
+<input type="date" id="startdate">
+
+<label>End Date</label>
+<input type="date" id="enddate">
 
 <label>Reason</label>
-<textarea id="reason" name="reason"></textarea>
+<textarea id="reason"></textarea>
 
 <button type="submit">Submit Request</button>
 
 </form>
 
 </div>
+
 <script>
 
-document.querySelector("form").addEventListener("submit", function(e){
+document.getElementById("form").addEventListener("submit", function(e){
 
 e.preventDefault();
 
-const data = {
-name: document.getElementById("name").value,
-id: document.getElementById("id").value,
-request: document.getElementById("request").value,
-date: document.getElementById("date").value,
-reason: document.getElementById("reason").value
+var data={
+name:document.getElementById("name").value,
+id:document.getElementById("id").value,
+request:document.getElementById("request").value,
+startdate:document.getElementById("startdate").value,
+enddate:document.getElementById("enddate").value,
+reason:document.getElementById("reason").value
 };
 
-fetch("https://script.google.com/macros/s/AKfycbzFLfKe5lXAsDz7qFThGSPwirMwekhLwL8F_UEpNBVmhHDydbRokdPt48030LSiFKrU/exec", {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
+fetch("https://script.google.com/macros/s/AKfycbxKGRBasfoH1fsbBlrBFsh-BmFHwZ6hnQZo6QyJNcl5VkKO6f-fuz4EWt9q-4xFoAkL/exec",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
 },
-body: JSON.stringify(data)
+body:JSON.stringify(data)
 })
-.then(response => response.text())
-.then(result => {
+.then(res=>res.text())
+.then(data=>{
 alert("Request Submitted Successfully");
-document.getElementById("employeeForm").reset();
+document.getElementById("form").reset();
 });
 
 });
