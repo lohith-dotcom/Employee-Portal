@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <title>Employee Request Portal</title>
@@ -118,7 +119,7 @@ document.getElementById("form").addEventListener("submit", function(e){
 
 e.preventDefault();
 
-var data={
+var data = {
 name:document.getElementById("name").value,
 id:document.getElementById("id").value,
 request:document.getElementById("request").value,
@@ -127,7 +128,7 @@ enddate:document.getElementById("enddate").value,
 reason:document.getElementById("reason").value
 };
 
-fetch("https://script.google.com/macros/s/AKfycbxKGRBasfoH1fsbBlrBFsh-BmFHwZ6hnQZo6QyJNcl5VkKO6f-fuz4EWt9q-4xFoAkL/exec",{
+fetch("https://script.google.com/macros/s/AKfycbz8WSM5a6Lsfj_0B5J2aQ4fyWA-PQChnuliFklEm_SwbCKwKjx-uxOqV_G9nCoTuLB5/exec",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -136,6 +137,7 @@ body:JSON.stringify(data)
 })
 .then(res=>res.text())
 .then(data=>{
+};
 alert("Request Submitted Successfully");
 document.getElementById("form").reset();
 });
