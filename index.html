@@ -120,26 +120,31 @@ document.getElementById("form").addEventListener("submit", function(e){
 e.preventDefault();
 
 var data = {
-name:document.getElementById("name").value,
-id:document.getElementById("id").value,
-request:document.getElementById("request").value,
-startdate:document.getElementById("startdate").value,
-enddate:document.getElementById("enddate").value,
-reason:document.getElementById("reason").value
+name: document.getElementById("name").value,
+employeeid: document.getElementById("id").value,
+requesttype: document.getElementById("request").value,
+startdate: document.getElementById("startdate").value,
+enddate: document.getElementById("enddate").value,
+reason: document.getElementById("reason").value
 };
 
-fetch("https://script.google.com/macros/s/AKfycbz8WSM5a6Lsfj_0B5J2aQ4fyWA-PQChnuliFklEm_SwbCKwKjx-uxOqV_G9nCoTuLB5/exec",{
+fetch("https://script.google.com/macros/s/AKfycbzTgropZOTQ6RVASGMYMM-H26p7bVzXJ2cueYk5cy2j4dpCOng3XdrNw3ga2r-ed32Y/exec",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
 },
 body:JSON.stringify(data)
 })
-.then(res=>res.text())
-.then(data=>{
-};
+.then(res => res.text())
+.then(response => {
 alert("Request Submitted Successfully");
 document.getElementById("form").reset();
+})
+.catch(error => {
+alert("Error submitting request");
+console.log(error);
+});
+
 });
 
 </script>
